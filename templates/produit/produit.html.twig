@@ -1,0 +1,36 @@
+{% extends 'base.html.twig' %}
+
+{% block title%} Produits {%endblock%}
+
+{% block container %}    
+    <div class="container mt-4">
+        <h2>Nos {{ produits|length }} Produits de meilleurs qualités 
+         <a href="{{ path('app_produit_new')}}">
+                            <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                                <button class="btn btn-primary btn mb-4 " type="button">Nouveau</button>
+                            </div>
+                        </a>
+        </h2>
+        {% for pro in produits %}
+              <div class="card mb-3 shadow-sm">
+                    <div class="card-body">
+                        <h5 class="card-title">Nom : {{pro.getNom}} </h5>
+                        <p class="card-text">Description : {{pro.getDescription}} </p>
+                         <p class="card-text">Prix : {{pro.getPrix}} €</p>
+                         {% if pro.superprix %}
+                               <p class="text-danger">Le prix semble cher</p>
+                         {% else %}
+                               <p class="text-success color-blue">Le prix semble abordable</p>
+                         {% endif %}
+                         <a href="{{ path('app_produit_detail', {'id': pro.id}) }}">
+                            <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                                <button class="btn btn-primary" type="button">Voir Plus</button>
+                            </div>
+                        </a>
+                 </div>
+                </div>
+        {% endfor %}
+    </div>
+
+
+{% endblock %}

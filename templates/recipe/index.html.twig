@@ -1,0 +1,10 @@
+{% extends 'base.html.twig' %}
+
+{% block container %}
+    <h2> BIENVENUE SUR SUPER RECETTE DE CUISINE</h2>
+    {% for recipe in recipes %}
+        <li>
+            <a href="{{ path('app_recipe') }}">{{ recipe.title }}</a>
+        </li>
+    {% endfor %}
+{% endblock %}

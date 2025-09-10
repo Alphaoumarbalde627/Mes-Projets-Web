@@ -1,0 +1,29 @@
+{% extends 'base.html.twig' %}
+
+{% block title%} Produits {%endblock%}
+
+{% block container %}    
+    <div class="container mt-4">
+        <h2>Le Produit {{ produit.nom}}  </h2>      
+              <div class="card mb-3 shadow-sm">
+                    <div class="card-body">
+                      
+                        <p class="card-text">Description : {{ produit.description}} </p>
+                         <p class="card-text">Prix : {{produit.prix}} €</p>
+                         {% if produit.superprix %}
+                               <p class="text-danger">Le prix semble cher</p>
+                         {% else %}
+                               <p class="text-success color-blue">Le prix semble abordable</p>
+                         {% endif %}
+                         <a href="{{ path('app_produit')}}">
+                            <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                                <button class="btn btn-primary" type="button">Retour aux produits</button>
+                            </div>
+                        </a>
+                 </div>
+                </div>
+       
+    </div>
+
+
+{% endblock %}
